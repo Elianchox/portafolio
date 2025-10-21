@@ -1,0 +1,53 @@
+---
+import ContactIcon from "../../assets/icons/ContactIcon.astro";
+import LinkedIn from "../../assets/icons/LinkedIn.astro";
+import Badge from "../Badge.astro";
+import SocialPill from "../SocialPill.astro";
+---
+
+<section
+  class="py-16 md:py-28 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
+  id="contacto"
+>
+  <div class="w-full">
+    <div class="flex flex-row items-center mb-6 space-x-4">
+      <img
+        src="/me.JPG"
+        alt="Foto de Elian Ramirez"
+        class="w-20 h-20 rounded-full object-cover"
+      />
+      <Badge>Disponible para trabajar</Badge>
+    </div>
+    <h1 class="text-4xl font-bold text-foreground sm:text-5xl">
+      <span class="tracking-tight [word-spacing:-15px]"
+        >Hey, soy Elian Ramirez</span
+      >
+    </h1>
+    <p class="mt-6 text-xl text-muted-foreground">
+      +3 años de experiencia como <strong
+        ><span class="text-accent"
+          >Desarrollador de Aplicaciones Web y Móviles.</span
+        ></strong
+      > de Barranquilla, Colombia 🇨🇴. Especializado en crear aplicaciones web y móviles
+      eficientes y escalables.
+    </p>
+    <nav class="flex flex-wrap gap-4 mt-8">
+      <SocialPill
+        href="mailto:elianramirezmanosalva@gmail.com"
+        variant="secondary"
+      >
+        <ContactIcon />
+        Contáctame
+      </SocialPill>
+      <SocialPill
+        href="https://linkedin.com/in/elianchoxo"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-secondary-foreground text-secondary hover:bg-secondary-foreground/80 active:bg-secondary-foreground"
+      >
+        <LinkedIn />
+        LinkedIn
+      </SocialPill>
+    </nav>
+  </div>
+</section>

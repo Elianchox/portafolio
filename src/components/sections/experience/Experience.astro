@@ -1,0 +1,59 @@
+---
+import Baggage from "../../../assets/icons/Baggage.astro";
+import Caption from "../../Caption.astro";
+import SectionContainer from "../SectionContainer.astro";
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    image: "/enternova-logo.webp",
+    title: "Enternova S.A.S",
+    role: "Desarrollador Full Stack",
+    location: "Bogotá, Colombia",
+    date: "Mayo 2024 – Presente",
+    badge: "Actualmente",
+    description: [
+      "Desarrollé funcionalidades frontend en React para un SGPA (Sistema de Gestión de Proyectos y Administración), enfocadas en contratos, tarifas y tiquetes, con mejoras visuales y de usabilidad.",
+      "Colaboré con equipos frontend y backend en flujos ágiles, asegurando entregas coordinadas y efectivas.",
+      "Contribuí a la estandarización del código y reutilización de componentes, mejorando la mantenibilidad del proyecto."
+    ]
+  },
+  {
+    title: "Byteware it Group SAS",
+    role: "Desarrollador Full Stack",
+    location: "Barranquilla, Colombia",
+    date: "Agosto 2023 – Abril 2024",
+    description: [
+      "Desarrollé Neuse, una plataforma de gestión residencial con apps móviles (Flutter) y web (React) para residentes, vigilantes y administradores.",
+      "Implementé votaciones en tiempo real y validación de visitas por QR, aumentando participación y reduciendo el registro en portería en un 50 %.",
+      "Automatizé registros administrativos (parqueaderos, apartamentos, etc.), reduciendo errores y tareas manuales.",
+      "Lideré de forma autónoma el frontend, optimizando flujos de usuario e integrando de forma fluida con el backend."
+    ]
+  },
+  {
+    image: "/lya_electronic_corp_logo.jpg",
+    title: "LyA Electronic",
+    role: "Desarrollador Junior Full Stack",
+    location: "Barranquilla, Colombia",
+    date: "Octubre 2022 – Julio 2024",
+    description: [
+      "Desarrollé más de 3 apps web y móviles (React, React Native, Flutter), incluyendo una plataforma tipo Uber (Anngel), logrando un MVP funcional en 6 meses y mejorando el rendimiento (+40 % en Lighthouse, carga hasta 1.4 s).",
+      "Establecí una arquitectura estándar en React y una librería de componentes reutilizables, acelerando el desarrollo y mejorando el onboarding.",
+      "Lideré el frontend técnico, coordinando con backend, proponiendo GitFlow y gestionando historias de usuario para mejorar la planificación y soporte en producción."
+    ]
+  }
+];
+
+
+---
+<SectionContainer id="experiencia">
+  <Caption>
+      <Baggage />
+      Experiencia laboral
+  </Caption>
+  <ol class="relative border-s border-gray-200 dark:border-gray-700 mx-6 sm:mx-4">
+    {EXPERIENCE.map((experience) => (
+      <ExperienceItem {...experience} />
+    ))}
+  </ol>
+</SectionContainer>

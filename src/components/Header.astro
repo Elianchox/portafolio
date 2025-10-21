@@ -1,0 +1,79 @@
+<header class="fixed top-3 z-10 items-center justify-center w-full mx-auto mt-2 hidden md:flex">
+   <nav id="nav" class="flex px-3 text-lg lg:text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center transition-all duration-300">
+      <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
+         aria-label="experiencia"
+         href="/#experiencia">Experiencia</a>
+      <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
+         aria-label="proyectos"
+         href="/#proyectos">Proyectos</a>
+      <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
+         aria-label="habilidades"
+         href="/#habilidades">Habilidades</a>
+      <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
+         aria-label="sobre-mi"
+         href="/#sobre-mi">Sobre mí</a>
+   </nav>
+</header>
+
+<script>
+  // Clases del navbar con scroll
+  const navClasses = [
+    "backdrop-blur-lg",
+    "bg-white/30",
+    "dark:bg-gray-900/30",
+    "shadow-lg",
+    "ring-1",
+    "ring-white/10"
+  ];
+
+  const nav = document.getElementById("nav");
+  let ticking = false;
+
+  // Optimización con requestAnimationFrame
+  const handleScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (nav) {
+          if (window.scrollY > 100) {
+            navClasses.forEach(cls => nav.classList.add(cls));
+          } else {
+            navClasses.forEach(cls => nav.classList.remove(cls));
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  // Intersection Observer optimizado
+  const links = document.querySelectorAll("nav a");
+  const sections = document.querySelectorAll("section[id]");
+
+  if (sections.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach((link) => {
+              const href = link.getAttribute("href");
+              link.classList.toggle(
+                "text-primary",
+                href === `/#${id}` || href === `#${id}`
+              );
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+        rootMargin: "-20% 0px -20% 0px"
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>
