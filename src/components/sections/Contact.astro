@@ -1,5 +1,6 @@
 ---
 import ContactIcon from "../../assets/icons/ContactIcon.astro";
+import DownloadIcon from "../../assets/icons/DownloadIcon.astro";
 import LinkedIn from "../../assets/icons/LinkedIn.astro";
 import Badge from "../Badge.astro";
 import SocialPill from "../SocialPill.astro";
@@ -45,9 +46,17 @@ import SocialPill from "../SocialPill.astro";
         rel="noopener noreferrer"
         variant="secondary"
       >
-        <!-- class="bg-secondary-foreground text-secondary hover:bg-secondary-foreground/80 active:bg-secondary-foreground dark:text-secondary" -->
         <LinkedIn />
         LinkedIn
+      </SocialPill>
+      <SocialPill
+        href="/cv.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="primary"
+      >
+        <DownloadIcon />
+        Descargar CV
       </SocialPill>
     </nav>
   </div>
