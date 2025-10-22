@@ -72,7 +72,7 @@
   --ring: #00B08A;
 
   --foreground: #171717;
-  --highlight: #ffc800;
+  --highlight: #ff9d00;
 }
 
 .dark {
@@ -100,7 +100,7 @@
   --destructive: #F87171;
   --destructive-foreground: #1F2937;
 
-  --background: #050505;
+  --background: #121212;
   --background-foreground: #EDEDED;
 
   --border: #2D2D2D;

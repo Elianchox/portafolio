@@ -20,8 +20,8 @@ interface Props {
 const { title, description, image, link, github, tags } = Astro.props;
 ---
 
-<section>
-  <div class="flex flex-col md:flex-row gap-6 items-start">
+<section class="text-foreground">
+  <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
     <img
       src={image}
       alt={title}

@@ -1,34 +1,17 @@
 ---
-import Badge from "./Badge.astro";
-import LinkedIn from "../assets/icons/LinkedIn.astro";
-import Skills from "../assets/icons/Skills.astro";
-import Person from "../assets/icons/Person.astro";
-import SocialPill from "./SocialPill.astro";
-import Caption from "./Caption.astro";
 import Experience from "./sections/experience/Experience.astro";
-import SectionContainer from "./sections/SectionContainer.astro";
 import Projects from "./sections/projects/Projects.astro";
 import Me from "./sections/Me.astro";
 import Contact from "./sections/Contact.astro";
+import Skills from "./sections/skills/Skills.astro";
 ---
 
 <main class="px-4">
   <Contact />
-  <div class="space-y-24">
+  <div class="space-y-32">
     <Experience />
     <Projects />
-    <SectionContainer id="habilidades">
-      <Caption>
-        <Skills />
-        Habilidades
-      </Caption>
-      <p>
-        Quis minim nostrud incididunt eu amet ut cupidatat dolore pariatur irure
-        sint. Reprehenderit esse aliqua labore Lorem sit consequat laboris esse
-        deserunt occaecat sint. Amet laborum occaecat officia culpa minim
-        excepteur proident mollit ut est culpa qui officia.
-      </p>
-    </SectionContainer>
+    <Skills />
     <Me />
   </div>
 </main>

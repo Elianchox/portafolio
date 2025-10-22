@@ -1,5 +1,9 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
 <header class="fixed top-3 z-10 items-center justify-center w-full mx-auto mt-2 hidden md:flex">
-   <nav id="nav" class="flex px-3 text-lg lg:text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center transition-all duration-300">
+   <nav id="nav" class="flex px-3 text-lg lg:text-sm font-medium rounded-full text-muted-foreground dark:text-foreground justify-center items-center transition-all duration-300">
       <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
          aria-label="experiencia"
          href="/#experiencia">Experiencia</a>
@@ -12,24 +16,23 @@
       <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
          aria-label="sobre-mi"
          href="/#sobre-mi">Sobre mí</a>
+      <ThemeToggle classContainer="px-4"/>
    </nav>
 </header>
 
 <script>
-  // Clases del navbar con scroll
   const navClasses = [
     "backdrop-blur-lg",
-    "bg-white/30",
-    "dark:bg-gray-900/30",
+    "bg-secondary-foreground/10",
+    "dark:bg-white/10",
     "shadow-lg",
     "ring-1",
-    "ring-white/10"
+    "ring-white/10",
   ];
 
   const nav = document.getElementById("nav");
   let ticking = false;
 
-  // Optimización con requestAnimationFrame
   const handleScroll = () => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
@@ -48,7 +51,6 @@
 
   window.addEventListener("scroll", handleScroll, { passive: true });
 
-  // Intersection Observer optimizado
   const links = document.querySelectorAll("nav a");
   const sections = document.querySelectorAll("section[id]");
 
@@ -69,8 +71,8 @@
         });
       },
       {
-        threshold: 0.5,
-        rootMargin: "-20% 0px -20% 0px"
+        threshold: 0.2,
+        rootMargin: "-30% 0px -40% 0px"
       }
     );
 

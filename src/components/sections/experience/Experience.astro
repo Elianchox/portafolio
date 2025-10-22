@@ -1,6 +1,7 @@
 ---
 import Baggage from "../../../assets/icons/Baggage.astro";
 import Caption from "../../Caption.astro";
+import Me from "../Me.astro";
 import SectionContainer from "../SectionContainer.astro";
 import ExperienceItem from "./ExperienceItem.astro";
 
@@ -16,6 +17,18 @@ const EXPERIENCE = [
       "Desarrollé funcionalidades frontend en React para un SGPA (Sistema de Gestión de Proyectos y Administración), enfocadas en contratos, tarifas y tiquetes, con mejoras visuales y de usabilidad.",
       "Colaboré con equipos frontend y backend en flujos ágiles, asegurando entregas coordinadas y efectivas.",
       "Contribuí a la estandarización del código y reutilización de componentes, mejorando la mantenibilidad del proyecto."
+    ]
+  },
+  {
+    image: '/tobiro.ico',
+    title: "Tobiro SAS",
+    role: "Desarrollador Frontend",
+    location: "Remoto",
+    date: "Julio 2025 – Septiembre 2025",
+    description: [
+      "Maqueté e implementé módulos frontend en React según lineamientos de diseño establecidos.",
+      "Desarrollé funcionalidades para carga masiva e individual de clientes, optimizando el proceso de gestión de datos.",
+      "Corregí incidencias reportadas en producción, mejorando la estabilidad y experiencia del usuario final."
     ]
   },
   {
@@ -51,7 +64,7 @@ const EXPERIENCE = [
       <Baggage />
       Experiencia laboral
   </Caption>
-  <ol class="relative border-s border-gray-200 dark:border-gray-700 mx-6 sm:mx-4">
+  <ol class="relative border-s border-secondary-foreground/15 dark:border-secondary-foreground/20 mx-6 sm:mx-4">
     {EXPERIENCE.map((experience) => (
       <ExperienceItem {...experience} />
     ))}

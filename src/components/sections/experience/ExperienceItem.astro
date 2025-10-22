@@ -11,9 +11,9 @@ interface Props {
 const { title, image, date, description, badge } = Astro.props;
 ---
 
-<li class="mb-10 ms-12">
+<li class="pl-12 pb-12">
   <img
-    class="absolute flex items-center justify-center size-12 rounded-full -start-6 ring-4 ring-primary/15"
+    class="absolute bg-background flex items-center justify-center size-12 rounded-full -start-6 ring-4 ring-primary/15"
     src={image || `https://api.dicebear.com/9.x/shapes/svg?seed=${title.replaceAll(/\s+/g, '_')}}`}
     alt={`Imagen de ${title}`}
   />

@@ -1,0 +1,163 @@
+---
+interface Props {
+  classContainer?: string;
+}
+import MonitorIcon from "../assets/icons/MonitorIcon.astro";
+import MoonIcon from "../assets/icons/MoonIcon.astro";
+import SunIcon from "../assets/icons/SunIcon.astro";
+---
+
+<div class:list={["relative theme-toggle-wrapper", Astro.props.classContainer]}>
+  <button
+    id="theme-current"
+    class="flex items-center justify-center p-2 hover:bg-secondary-300 dark:hover:bg-secondary-700 border-none rounded-lg cursor-pointer text-foreground transition-all duration-200"
+    aria-label="Cambiar tema"
+  >
+    <div class="theme-icon-light hidden text-primary">
+      <SunIcon class="size-4" />
+      Claro
+    </div>
+    <div class="theme-icon-dark hidden text-primary">
+      <MoonIcon class="size-4" />
+      Oscuro
+    </div>
+    <div class="theme-icon-system hidden text-primary">
+      <MonitorIcon class="size-4" />
+      Sistema
+    </div>
+  </button>
+
+  <div
+    class="theme-dropdown absolute top-[calc(100%+0.5rem)] right-0 bg-background border border-border rounded-lg p-1 min-w-[140px] opacity-0 invisible -translate-y-2.5 transition-all duration-200 ease-in-out shadow-lg z-50"
+  >
+    <button
+      class="flex items-center gap-3 w-full px-3 py-2 bg-transparent border-none rounded-md cursor-pointer text-foreground hover:bg-secondary-400 dark:hover:bg-secondary-700 transition-all duration-150 text-sm theme-option"
+      data-theme="light"
+      aria-label="Modo claro"
+    >
+      <SunIcon class="size-4" />
+      <span class="whitespace-nowrap">Claro</span>
+    </button>
+
+    <button
+      class="flex items-center gap-3 w-full px-3 py-2 bg-transparent border-none rounded-md cursor-pointer text-foreground hover:bg-secondary-400 dark:hover:bg-secondary-700 transition-all duration-150 text-sm theme-option"
+      data-theme="dark"
+      aria-label="Modo oscuro"
+    >
+      <MoonIcon class="size-4" />
+      <span class="whitespace-nowrap">Oscuro</span>
+    </button>
+
+    <button
+      class="flex items-center gap-3 w-full px-3 py-2 bg-transparent border-none rounded-md cursor-pointer text-foreground hover:bg-secondary-400 dark:hover:bg-secondary-700 transition-all duration-150 text-sm theme-option"
+      data-theme="system"
+      aria-label="Según sistema"
+    >
+      <MonitorIcon class="size-4" />
+      <span class="whitespace-nowrap">Sistema</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  .theme-dropdown {
+    pointer-events: none;
+  }
+
+  .theme-toggle-wrapper:hover .theme-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .theme-icon-light.active,
+  .theme-icon-dark.active,
+  .theme-icon-system.active {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .theme-option.active {
+    color: var(--primary);
+    background-color: var(--secondary-200);
+  }
+
+  :global(.dark) .theme-option.active {
+    background-color: var(--secondary-800);
+  }
+</style>
+
+<script>
+  type Theme = "light" | "dark" | "system";
+
+  const getThemePreference = (): Theme => {
+    if (typeof localStorage !== "undefined") {
+      return (localStorage.getItem("theme") as Theme) || "system";
+    }
+    return "system";
+  };
+
+  const getSystemTheme = (): "light" | "dark" => {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  const updateUI = (activeTheme: Theme): void => {
+    document.querySelectorAll('[class*="theme-icon-"]').forEach((icon) => {
+      icon.classList.remove("active");
+    });
+
+    const currentIcon = document.querySelector(`.theme-icon-${activeTheme}`);
+    if (currentIcon) {
+      currentIcon.classList.add("active");
+    }
+
+    document.querySelectorAll(".theme-option").forEach((option) => {
+      const btn = option as HTMLButtonElement;
+      btn.classList.toggle("active", btn.dataset.theme === activeTheme);
+    });
+  };
+
+  const applyTheme = (theme: Theme): void => {
+    const actualTheme = theme === "system" ? getSystemTheme() : theme;
+    document.documentElement.classList.toggle("dark", actualTheme === "dark");
+    updateUI(theme);
+  };
+
+  const setTheme = (theme: Theme): void => {
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem("theme", theme);
+    }
+    applyTheme(theme);
+  };
+
+  const init = (): void => {
+    const currentTheme = getThemePreference();
+    applyTheme(currentTheme);
+
+    document.querySelectorAll(".theme-option").forEach((option) => {
+      option.addEventListener("click", () => {
+        const btn = option as HTMLButtonElement;
+        const theme = btn.dataset.theme as Theme;
+        if (theme) setTheme(theme);
+      });
+    });
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", () => {
+      const currentTheme = getThemePreference();
+      if (currentTheme === "system") {
+        applyTheme("system");
+      }
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>
