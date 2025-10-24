@@ -6,7 +6,7 @@ import SectionContainer from "./SectionContainer.astro";
 
 interface Props {
   aboutMe: PortfolioConfig['aboutMe']
-  sectionId: PortfolioConfig['navigation']['nav']['about']['sectionId']
+  sectionId: PortfolioConfig['navigation']['nav']['aboutMe']['sectionId']
 }
 
 const { aboutMe, sectionId } = Astro.props
@@ -17,7 +17,7 @@ const { aboutMe, sectionId } = Astro.props
     <Person />
     {aboutMe.title}
   </Caption>
-  <div class="flex gap-x-8">
+  <div class="flex flex-col-reverse items-center sm:flex-row sm:gap-x-8 sm:items-start gap-y-8">
     <div class="text-foreground/90 text-justify text-pretty" set:html={aboutMe.data} />
     <img src="/me.JPG" alt="" class="w-64 h-64 rounded-lg object-cover" />
   </div>
