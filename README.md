@@ -76,5 +76,5 @@ MIT - Siéntete libre de usar este proyecto como base para tu portafolio persona
 ## 👤 Autor
 
 [Tu Nombre]
-- GitHub: [@tu-usuario](https://github.com/tu-usuario)
-- LinkedIn: [Tu Perfil](https://linkedin.com/in/tu-perfil)
+- GitHub: [@Elianchox](https://github.com/Elianchox)
+- LinkedIn: [Elian Ramirez](https://www.linkedin.com/in/elianchox)
