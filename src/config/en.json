@@ -1,0 +1,269 @@
+{
+  "warnings": {
+    "noAssigned": "Unassigned"
+  },
+  "head": {
+    "title": "Elianchox Portfolio - Web and Mobile Developer & Programmer",
+    "description": "Hire Elianchox for your web and mobile development projects. Over 4 years of experience creating innovative and efficient solutions."
+  },
+  "navigation": {
+    "nav": {
+      "experience": {
+        "name": "Experience",
+        "sectionId": "experiencia"
+      },
+      "projects": {
+        "name": "Projects",
+        "sectionId": "proyectos"
+      },
+      "skills": {
+        "name": "Skills",
+        "sectionId": "habilidades"
+      },
+      "aboutMe": {
+        "name": "About Me",
+        "sectionId": "sobre-mi"
+      }
+    },
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+  "hero": {
+    "sectionId": "contacto",
+    "badgeText": "Available for work",
+    "title": "Hey, I'm Elian Ramírez",
+    "description": "3+ years of experience as a <strong><span class='text-highlight'>Web and Mobile Applications Developer</span></strong> from Barranquilla, Colombia 🇨🇴. Specialized in building efficient and scalable web and mobile applications.",
+    "buttons": {
+      "contactMe": {
+        "label": "Contact Me",
+        "href": "mailto:elianramirezmanosalva@gmail.com"
+      },
+      "linkedIn": {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/in/elianchoxo"
+      },
+      "downloadCv": {
+        "label": "Download CV",
+        "href": "/cv.pdf"
+      }
+    }
+  },
+  "experience": {
+    "sectionId": "experiencia",
+    "title": "Work Experience",
+    "data": [
+      {
+        "image": "/enternova-logo.webp",
+        "title": "Enternova S.A.S.",
+        "role": "Full Stack Developer",
+        "location": "Bogotá, Colombia",
+        "date": "May 2024 – Present",
+        "badge": "Currently",
+        "description": [
+          "Developed frontend features in React for a Project and Administration Management System (SGPA), focusing on contracts, rates, and tickets, with visual and usability improvements.",
+          "Collaborated with frontend and backend teams in agile workflows, ensuring coordinated and effective deliveries.",
+          "Contributed to code standardization and component reuse, improving project maintainability."
+        ]
+      },
+      {
+        "image": "/tobiro.ico",
+        "title": "Tobiro S.A.S.",
+        "role": "Frontend Developer",
+        "location": "Remote",
+        "date": "July 2025 – September 2025",
+        "description": [
+          "Structured and implemented frontend modules in React following established design guidelines.",
+          "Developed features for bulk and individual client uploads, optimizing the data management process.",
+          "Fixed production-reported issues, improving stability and overall user experience."
+        ]
+      },
+      {
+        "title": "Byteware IT Group S.A.S.",
+        "role": "Full Stack Developer",
+        "location": "Barranquilla, Colombia",
+        "date": "August 2023 – April 2024",
+        "description": [
+          "Developed Neuse, a residential management platform with mobile (Flutter) and web (React) apps for residents, guards, and administrators.",
+          "Implemented real-time voting and QR-based visitor validation, increasing participation and reducing gate registration time by 50%.",
+          "Automated administrative records (parking, apartments, etc.), reducing errors and manual work.",
+          "Independently led the frontend, optimizing user flows and integrating smoothly with the backend."
+        ]
+      },
+      {
+        "image": "/lya_electronic_corp_logo.jpg",
+        "title": "LyA Electronic",
+        "role": "Junior Full Stack Developer",
+        "location": "Barranquilla, Colombia",
+        "date": "October 2022 – July 2024",
+        "description": [
+          "Developed over three web and mobile apps (React, React Native, Flutter), including a ride-hailing platform (Anngel), achieving a functional MVP in six months and improving performance (+40% in Lighthouse, load time up to 1.4 s).",
+          "Established a standard architecture in React and a reusable components library, accelerating development and improving onboarding.",
+          "Led the technical frontend, coordinating with backend, proposing GitFlow, and managing user stories to enhance planning and production support."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "sectionId": "proyectos",
+    "title": "Projects",
+    "data": [
+      {
+        "title": "Anngel - Emergency Platform",
+        "description": "Mobile app similar to Uber for emergency services, allowing users to request quick and efficient help during critical situations.",
+        "link": "https://anngel.mx/",
+        "image": "/anngel-app.png",
+        "tags": [
+          {
+            "name": "React Native",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
+            "chipClassName": "bg-[#61DBFB]/10 text-[#61DBFB] font-bold border-[#61DBFB]"
+          },
+          {
+            "name": "React",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
+            "chipClassName": "bg-[#61DBFB]/10 text-[#61DBFB] font-bold border-[#61DBFB]"
+          }
+        ]
+      },
+      {
+        "title": "Neuse - Residential Management",
+        "description": "Residential management platform with mobile and web apps for residents, guards, and administrators, making communication and administration easier in residential communities.",
+        "link": "https://www.instagram.com/neuseapp/",
+        "image": "/neuse_app.jpg",
+        "tags": [
+          {
+            "name": "Flutter",
+            "icon": "https://cdn.iconscout.com/icon/free/png-512/free-flutter-logo-icon-svg-download-png-1720090.png?f=webp&w=256",
+            "chipClassName": "bg-[#02569B]/10 text-[#02569B] border-[#02569B]"
+          },
+          {
+            "name": "React",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
+            "chipClassName": "bg-[#61DBFB]/10 text-[#61DBFB] font-bold border-[#61DBFB]"
+          }
+        ]
+      }
+    ]
+  },
+  "skillsCategory": {
+    "sectionId": "habilidades",
+    "title": "Skills",
+    "data": [
+      {
+        "name": "Languages",
+        "skills": [
+          {
+            "name": "Spanish (Native)",
+            "icon": "https://cdn-icons-png.flaticon.com/512/197/197575.png",
+            "className": "bg-red-400/10 text-red-500 border border-red-500 rounded"
+          },
+          {
+            "name": "English (B1)",
+            "icon": "https://cdn-icons-png.flaticon.com/512/197/197374.png",
+            "className": "bg-blue-400/10 text-blue-500 border border-blue-500 rounded"
+          }
+        ]
+      },
+      {
+        "name": "Frontend",
+        "skills": [
+          {
+            "name": "Vue.js",
+            "icon": "https://vuejs.org/images/logo.png",
+            "className": "bg-green-400/20 text-green-500 border border-green-400"
+          },
+          {
+            "name": "React",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+            "className": "bg-cyan-400/10 text-cyan-500 border border-cyan-400"
+          },
+          {
+            "name": "Next.js",
+            "icon": "https://www.drupal.org/files/project-images/nextjs-icon-dark-background.png",
+            "className": "bg-neutral-800/20 text-neutral-900 border border-neutral-800 dark:text-foreground"
+          },
+          {
+            "name": "React Native",
+            "icon": "https://reactnative.dev/img/header_logo.svg",
+            "className": "bg-cyan-400/10 text-cyan-500 border border-cyan-400"
+          },
+          {
+            "name": "Flutter",
+            "icon": "https://cdn.iconscout.com/icon/free/png-512/free-flutter-logo-icon-svg-download-png-1720090.png?f=webp&w=256",
+            "className": "bg-blue-400/20 text-blue-500 border border-blue-400"
+          },
+          {
+            "name": "Tailwind CSS",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+            "className": "bg-teal-400/20 text-teal-500 border border-teal-400"
+          },
+          {
+            "name": "Styled Components",
+            "icon": "https://avatars.githubusercontent.com/u/20658825?s=200&v=4",
+            "className": "bg-pink-400/20 text-pink-500 border border-pink-400"
+          }
+        ]
+      },
+      {
+        "name": "Backend",
+        "skills": [
+          {
+            "name": "Node.js",
+            "icon": "https://s3.eu-west-1.amazonaws.com/images.tutorialedge.net/images/node.png",
+            "className": "bg-lime-400/20 text-lime-600 border border-lime-400"
+          },
+          {
+            "name": "NestJS",
+            "icon": "https://nestjs.com/img/logo-small.svg",
+            "className": "bg-rose-400/20 text-rose-500 border border-rose-400"
+          }
+        ]
+      },
+      {
+        "name": "APIs",
+        "skills": [
+          {
+            "name": "REST",
+            "icon": "https://cdn-icons-png.flaticon.com/512/1006/1006547.png",
+            "className": "bg-amber-400/20 text-amber-500 border border-amber-400"
+          },
+          {
+            "name": "WebSockets",
+            "icon": "https://cdn-icons-png.flaticon.com/512/189/189792.png",
+            "className": "bg-purple-400/20 text-purple-500 border border-purple-400"
+          }
+        ]
+      },
+      {
+        "name": "Databases",
+        "skills": [
+          {
+            "name": "PostgreSQL",
+            "icon": "https://www.postgresql.org/media/img/about/press/elephant.png",
+            "className": "bg-indigo-400/20 text-indigo-500 border border-indigo-400"
+          },
+          {
+            "name": "MongoDB",
+            "icon": "https://images.icon-icons.com/2415/PNG/512/mongodb_plain_logo_icon_146422.png",
+            "className": "bg-emerald-400/20 text-emerald-500 border border-emerald-400"
+          }
+        ]
+      }
+    ]
+  },
+  "aboutMe": {
+    "sectionId": "sobre-mi",
+    "title": "About Me",
+    "data": "I'm <strong>Elian Ramírez</strong>, a web and mobile developer with over three years of experience. I'm passionate about creating efficient and scalable interfaces, focusing on performance and user experience.<br />I've led frontend and full-stack development in companies like <strong>LyA Electronic</strong> and <strong>Byteware</strong>, building React, Flutter, and Node.js platforms that optimized internal processes and improved delivery speed.<br />Currently, at <strong>Enternova S.A.S.</strong>, I contribute to the development of a Project and Administration Management System (SGPA) in React, collaborating with agile teams to deliver robust and maintainable solutions. My goal is to continue growing in modern frontend development with technologies like Next.js and NestJS."
+  },
+  "footer": {
+    "copyright": "2024",
+    "copyrightText": "Almost all rights reserved",
+    "authorName": "elianchox",
+    "authorUrl": "https://eliancho.dev",
+    "links": [{ "label": "Contact", "sectionId": "contacto" }]
+  }
+}

@@ -1,0 +1,12 @@
+---
+import Welcome from '../../components/Welcome.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getTranslations } from '../../utils/i18n';
+const locale = Astro.currentLocale || 'es';
+const t = await getTranslations(locale);
+---
+
+<Layout t={t}>
+	<h1>{Astro.currentLocale}</h1>
+	<Welcome t={t}/>
+</Layout>

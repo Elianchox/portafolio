@@ -1,17 +1,23 @@
 ---
 import Experience from "./sections/experience/Experience.astro";
 import Projects from "./sections/projects/Projects.astro";
-import Me from "./sections/Me.astro";
+import AboutMe from "./sections/AboutMe.astro";
 import Contact from "./sections/Contact.astro";
 import Skills from "./sections/skills/Skills.astro";
+import type { PortfolioConfig } from "../types/config";
+interface Props {
+  t: PortfolioConfig
+}
+
+const { experience, projects, skillsCategory, navigation, aboutMe, hero } = Astro.props.t
 ---
 
 <main class="px-4">
-  <Contact />
+  <Contact hero={hero}/>
   <div class="space-y-32">
-    <Experience />
-    <Projects />
-    <Skills />
-    <Me />
+    <Experience experiences={experience} sectionId={navigation.nav.experience.sectionId} />
+    <Projects projects={projects} sectionId={navigation.nav.projects.sectionId} />
+    <Skills skillsCategory={skillsCategory} sectionId={navigation.nav.skills.sectionId} />
+    <AboutMe aboutMe={aboutMe} sectionId={navigation.nav.aboutMe.sectionId}/>
   </div>
 </main>

@@ -1,0 +1,24 @@
+---
+import Person from "../../assets/icons/Person.astro";
+import type { PortfolioConfig } from "../../types/config";
+import Caption from "../Caption.astro";
+import SectionContainer from "./SectionContainer.astro";
+
+interface Props {
+  aboutMe: PortfolioConfig['aboutMe']
+  sectionId: PortfolioConfig['navigation']['nav']['about']['sectionId']
+}
+
+const { aboutMe, sectionId } = Astro.props
+---
+
+<SectionContainer id={sectionId}>
+  <Caption>
+    <Person />
+    {aboutMe.title}
+  </Caption>
+  <div class="flex gap-x-8">
+    <div class="text-foreground/90 text-justify text-pretty" set:html={aboutMe.data} />
+    <img src="/me.JPG" alt="" class="w-64 h-64 rounded-lg object-cover" />
+  </div>
+</SectionContainer>

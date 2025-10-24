@@ -2,8 +2,15 @@
 import ContactIcon from "../../assets/icons/ContactIcon.astro";
 import DownloadIcon from "../../assets/icons/DownloadIcon.astro";
 import LinkedIn from "../../assets/icons/LinkedIn.astro";
+import type { PortfolioConfig } from "../../types/config";
 import Badge from "../Badge.astro";
 import SocialPill from "../SocialPill.astro";
+
+interface Props {
+  hero: PortfolioConfig['hero']
+}
+
+const { hero } = Astro.props
 ---
 
 <section
@@ -14,49 +21,42 @@ import SocialPill from "../SocialPill.astro";
     <div class="flex flex-row items-center mb-6 space-x-4">
       <img
         src="/me.JPG"
-        alt="Foto de Elian Ramirez"
+        alt="Foto del dueño del portafolio"
         class="size-26 rounded-full object-cover"
       />
-      <Badge>Disponible para trabajar</Badge>
+      <Badge>{hero.badgeText}</Badge>
     </div>
     <h1 class="text-4xl font-bold text-foreground sm:text-5xl">
       <span class="tracking-tight [word-spacing:-15px]"
-        >Hey, soy Elian Ramirez</span
+        >{hero.title}</span
       >
     </h1>
-    <p class="mt-6 text-xl text-muted-foreground">
-      +3 años de experiencia como <strong
-        ><span class="text-highlight"
-          >Desarrollador de Aplicaciones Web y Móviles.</span
-        ></strong
-      > de Barranquilla, Colombia 🇨🇴. Especializado en crear aplicaciones web y móviles
-      eficientes y escalables.
-    </p>
+    <p class="mt-6 text-xl text-muted-foreground" set:html={hero.description} />
     <nav class="flex flex-wrap gap-4 mt-8">
       <SocialPill
-        href="mailto:elianramirezmanosalva@gmail.com"
+        href={hero.buttons.contactMe.href}
         variant="secondary"
       >
         <ContactIcon />
-        Contáctame
+        {hero.buttons.contactMe.label}
       </SocialPill>
       <SocialPill
-        href="https://linkedin.com/in/elianchoxo"
+        href={hero.buttons.linkedIn.href}
         target="_blank"
         rel="noopener noreferrer"
         variant="secondary"
       >
         <LinkedIn />
-        LinkedIn
+        {hero.buttons.linkedIn.label}
       </SocialPill>
       <SocialPill
-        href="/cv.pdf"
+        href={hero.buttons.downloadCv.href}
         target="_blank"
         rel="noopener noreferrer"
         variant="primary"
       >
         <DownloadIcon />
-        Descargar CV
+        {hero.buttons.downloadCv.label}
       </SocialPill>
     </nav>
   </div>

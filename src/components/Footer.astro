@@ -1,11 +1,22 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { PortfolioConfig } from '../types/config'
+interface Props {
+   footer: PortfolioConfig['footer']
+}
+
+const { footer } = Astro.props
+const locale = Astro.currentLocale || 'es';
+---
+
 <footer class="text-foreground/60 opacity-80 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl pb-10 flex justify-center">
    <div class="rounded-lg w-full max-w-screen mx-auto md:flex md:items-center md:justify-between py-4">
-      <span class="text-sm sm:text-center">© 2025 <a href="https://midu.dev/" class="hover:underline">elianchox</a>. Casi
-      todos los derechos reservados
+      <span class="text-sm sm:text-center">© {footer.copyright} <a href={footer.authorUrl} class="hover:underline">{footer.authorName}</a>. {footer.copyrightText}
       </span>
       <ul class="flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0 text-foreground">
-         <li> <a href="/#sobre-mi" class="hover:underline me-4 md:me-6">Sobre mí</a> </li>
-         <li> <a href="/#contacto" class="hover:underline">Contacto</a> </li>
+      {footer.links.map(link => (
+         <li> <a href={`${getRelativeLocaleUrl(locale)}#${link.sectionId}`} class="hover:underline">{link.label}</a> </li>
+      ))}
       </ul>
    </div>
 </footer>

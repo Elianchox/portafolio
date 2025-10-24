@@ -1,8 +1,21 @@
 ---
+import type { PortfolioConfig } from "../types/config";
 import "../styles/global.css";
 import "@fontsource-variable/jetbrains-mono";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+interface Props {
+  t: PortfolioConfig
+}
+
+const {
+  t: {
+    warnings: { noAssigned },
+    head: { title = noAssigned, description = noAssigned },
+    navigation,
+    footer
+  }
+} = Astro.props
 ---
 
 <!doctype html>
@@ -12,10 +25,10 @@ import Header from "../components/Header.astro";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{Astro.props.title ? Astro.props.title : "My Astro Site"}</title>
+    <title>{title}</title>
     <meta
       name="description"
-      content={Astro.props.description ? Astro.props.description : ""}
+      content={description}
     />
   </head>
   <body class="relative bg-background">
@@ -23,9 +36,9 @@ import Header from "../components/Header.astro";
       class="absolute inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#E2E4E9_1px,transparent_1px)] dark:bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:16px_16px]"
     >
     </div>
-    <Header />
+    <Header navigation={navigation}/>
     <slot />
-    <Footer />
+    <Footer footer={footer}/>
   </body>
 </html>
 

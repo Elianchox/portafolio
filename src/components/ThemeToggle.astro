@@ -1,13 +1,21 @@
 ---
-interface Props {
-  classContainer?: string;
-}
+import type { PortfolioConfig } from "../types/config";
 import MonitorIcon from "../assets/icons/MonitorIcon.astro";
 import MoonIcon from "../assets/icons/MoonIcon.astro";
 import SunIcon from "../assets/icons/SunIcon.astro";
+interface Props {
+  classContainer?: string;
+  themeLabels: PortfolioConfig['navigation']['theme']
+}
+
+const {
+  classContainer = '',
+  themeLabels
+} = Astro.props
+
 ---
 
-<div class:list={["relative theme-toggle-wrapper", Astro.props.classContainer]}>
+<div class:list={["relative theme-toggle-wrapper", classContainer]}>
   <button
     id="theme-current"
     class="flex items-center justify-center p-2 hover:bg-secondary-300 dark:hover:bg-secondary-700 border-none rounded-lg cursor-pointer text-foreground transition-all duration-200"
@@ -15,15 +23,15 @@ import SunIcon from "../assets/icons/SunIcon.astro";
   >
     <div class="theme-icon-light hidden text-primary">
       <SunIcon class="size-4" />
-      Claro
+      {themeLabels.light}
     </div>
     <div class="theme-icon-dark hidden text-primary">
       <MoonIcon class="size-4" />
-      Oscuro
+      {themeLabels.dark}
     </div>
     <div class="theme-icon-system hidden text-primary">
       <MonitorIcon class="size-4" />
-      Sistema
+      {themeLabels.system}
     </div>
   </button>
 
@@ -36,7 +44,7 @@ import SunIcon from "../assets/icons/SunIcon.astro";
       aria-label="Modo claro"
     >
       <SunIcon class="size-4" />
-      <span class="whitespace-nowrap">Claro</span>
+      <span class="whitespace-nowrap">{themeLabels.light}</span>
     </button>
 
     <button
@@ -45,7 +53,7 @@ import SunIcon from "../assets/icons/SunIcon.astro";
       aria-label="Modo oscuro"
     >
       <MoonIcon class="size-4" />
-      <span class="whitespace-nowrap">Oscuro</span>
+      <span class="whitespace-nowrap">{themeLabels.dark}</span>
     </button>
 
     <button
@@ -54,7 +62,7 @@ import SunIcon from "../assets/icons/SunIcon.astro";
       aria-label="Según sistema"
     >
       <MonitorIcon class="size-4" />
-      <span class="whitespace-nowrap">Sistema</span>
+      <span class="whitespace-nowrap">{themeLabels.system}</span>
     </button>
   </div>
 </div>

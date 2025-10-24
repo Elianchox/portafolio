@@ -1,20 +1,15 @@
 ---
 import Eye from "../../../assets/icons/Eye.astro";
 import Github from "../../../assets/icons/Github.astro";
+import type { PortfolioConfig } from "../../../types/config";
 import SocialPill from "../../SocialPill.astro";
-
 interface Props {
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-  github?: string;
-  tags?: {
-    name: string;
-    icon?: string;
-    bgColor: string;
-    colorText?: string;
-  }[];
+  title: PortfolioConfig['projects']['data'][0]['title'],
+  description: PortfolioConfig['projects']['data'][0]['description'],
+  image: PortfolioConfig['projects']['data'][0]['image'],
+  link: PortfolioConfig['projects']['data'][0]['link'],
+  github: PortfolioConfig['projects']['data'][0]['github'],
+  tags: PortfolioConfig['projects']['data'][0]['tags'],
 }
 
 const { title, description, image, link, github, tags } = Astro.props;
@@ -34,12 +29,15 @@ const { title, description, image, link, github, tags } = Astro.props;
           <div class="flex flex-wrap gap-2 mb-4">
             {tags.map((tag) => (
               <span
-                class={`inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-sm font-medium ${tag.bgColor} text-gray-800 dark:text-gray-200`}
+                class:list={[
+                  "inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-sm font-medium border",
+                  tag.chipClassName
+                ]}
               >
                 {tag.icon && (
                   <img src={tag.icon} alt={tag.name} class="w-4 h-4" />
                 )}
-                <span class={tag.colorText}>{tag.name}</span>
+                {tag.name}
               </span>
             ))}
           </div>

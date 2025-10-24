@@ -1,22 +1,22 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { PortfolioConfig } from "../types/config";
 import ThemeToggle from "./ThemeToggle.astro";
+interface Props {
+  navigation: PortfolioConfig['navigation']
+}
+
+const { navigation } = Astro.props
+const locale = Astro.currentLocale || 'es';
 ---
 
 <header class="fixed top-3 z-10 items-center justify-center w-full mx-auto mt-2 hidden md:flex">
    <nav id="nav" class="flex px-3 text-lg lg:text-sm font-medium rounded-full text-muted-foreground dark:text-foreground justify-center items-center transition-all duration-300">
-      <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
-         aria-label="experiencia"
-         href="/#experiencia">Experiencia</a>
-      <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
-         aria-label="proyectos"
-         href="/#proyectos">Proyectos</a>
-      <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
-         aria-label="habilidades"
-         href="/#habilidades">Habilidades</a>
-      <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
-         aria-label="sobre-mi"
-         href="/#sobre-mi">Sobre mí</a>
-      <ThemeToggle classContainer="px-4"/>
+      {Object.values(navigation.nav).map(nav => (
+        <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
+         href={`${getRelativeLocaleUrl(locale)}#${nav.sectionId}`}  data-section={nav.sectionId}>{nav.name}</a>
+      ))}
+      <ThemeToggle classContainer="px-4" themeLabels={navigation.theme}/>
    </nav>
 </header>
 
@@ -51,7 +51,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 
   window.addEventListener("scroll", handleScroll, { passive: true });
 
-  const links = document.querySelectorAll("nav a");
+  const links = document.querySelectorAll("nav a[data-section]");
   const sections = document.querySelectorAll("section[id]");
 
   if (sections.length > 0) {
@@ -61,10 +61,10 @@ import ThemeToggle from "./ThemeToggle.astro";
           if (entry.isIntersecting) {
             const id = entry.target.id;
             links.forEach((link) => {
-              const href = link.getAttribute("href");
+              const sectionId = link.getAttribute("data-section");
               link.classList.toggle(
                 "text-primary",
-                href === `/#${id}` || href === `#${id}`
+                sectionId === id
               );
             });
           }
