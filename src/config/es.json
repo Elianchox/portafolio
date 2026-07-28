@@ -58,14 +58,15 @@
       {
         "image": "/enternova-logo.webp",
         "title": "Enternova S.A.S.",
-        "role": "Desarrollador Full Stack",
+        "role": "Desarrollador Full Stack & AI Workflow Engineer",
         "location": "Bogotá, Colombia",
         "date": "Mayo 2024 – Presente",
         "badge": "Actualmente",
         "description": [
-          "Desarrollé funcionalidades frontend en React para un SGPA (Sistema de Gestión de Proyectos y Administración), enfocadas en contratos, tarifas y tiquetes, con mejoras visuales y de usabilidad.",
-          "Colaboré con equipos frontend y backend en flujos ágiles, asegurando entregas coordinadas y efectivas.",
-          "Contribuí a la estandarización del código y a la reutilización de componentes, mejorando la mantenibilidad del proyecto."
+          "Diseñé e implementé un pipeline de desarrollo asistido por IA — planificar arquitectura y tareas con agentes de IA, generar código mediante flujos automatizados, y garantizar calidad con code review sistemático — acelerando la entrega sin bajar estándares.",
+          "Desarrollé funcionalidades frontend en React para una plataforma de gestión de abastecimiento, incluyendo módulos de compras, contratos, tarifas y tiquetes, con mejoras continuas de UI/UX.",
+          "Establecí estándares frontend, librerías de componentes reutilizables y convenciones de código que mejoraron la mantenibilidad del proyecto y aceleraron la integración de nuevos miembros.",
+          "Colaboré estrechamente con equipos backend y de producto en sprints ágiles, traduciendo requerimientos de negocio en soluciones técnicas y asegurando entregas coherentes y de alta calidad."
         ]
       },
       {
@@ -111,6 +112,34 @@
     "title": "Proyectos",
     "data": [
       {
+        "title": "4Visum POS",
+        "description": "Sistema POS dual para restaurantes y bares. Combina un panel web de administración (Next.js 16, Prisma 7, PostgreSQL) con una app móvil para clientes en mesa vía QR. Integrado con pagos digitales Wompi, con soporte multi-tenant, gestión de órdenes en tiempo real y control de acceso basado en roles.",
+        "link": "https://github.com/Elianchox/pos",
+        "image": "/4visum-pos.png",
+        "tags": [
+          {
+            "name": "Next.js",
+            "icon": "https://www.drupal.org/files/project-images/nextjs-icon-dark-background.png",
+            "chipClassName": "bg-neutral-800/20 text-neutral-900 border border-neutral-800 dark:text-foreground"
+          },
+          {
+            "name": "TypeScript",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/ISO_C%2B%2B_Logo.svg/800px-ISO_C%2B%2B_Logo.svg.png",
+            "chipClassName": "bg-blue-500/10 text-blue-600 border border-blue-500"
+          },
+          {
+            "name": "PostgreSQL",
+            "icon": "https://www.postgresql.org/media/img/about/press/elephant.png",
+            "chipClassName": "bg-indigo-400/20 text-indigo-500 border border-indigo-400"
+          },
+          {
+            "name": "Tailwind CSS",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+            "chipClassName": "bg-teal-400/20 text-teal-500 border border-teal-400"
+          }
+        ]
+      },
+      {
         "title": "Anngel - Plataforma de emergencia",
         "description": "Aplicación móvil tipo Uber para servicios de emergencia, que permite a los usuarios solicitar ayuda rápida y eficiente en situaciones críticas.",
         "link": "https://anngel.mx/",
@@ -153,21 +182,6 @@
     "title": "Habilidades",
     "data": [
       {
-        "name": "Idiomas",
-        "skills": [
-          {
-            "name": "Español (Nativo)",
-            "icon": "https://cdn-icons-png.flaticon.com/512/197/197575.png",
-            "className": "bg-red-400/10 text-red-500 border border-red-500 rounded"
-          },
-          {
-            "name": "Inglés (B1)",
-            "icon": "https://cdn-icons-png.flaticon.com/512/197/197374.png",
-            "className": "bg-blue-400/10 text-blue-500 border border-blue-500 rounded"
-          }
-        ]
-      },
-      {
         "name": "Frontend",
         "skills": [
           {
@@ -204,6 +218,41 @@
             "name": "Styled Components",
             "icon": "https://avatars.githubusercontent.com/u/20658825?s=200&v=4",
             "className": "bg-pink-400/20 text-pink-500 border border-pink-400"
+          }
+        ]
+      },
+      {
+        "name": "IA",
+        "skills": [
+          {
+            "name": "Claude / Anthropic",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Anthropic_logo.svg/320px-Anthropic_logo.svg.png",
+            "className": "bg-orange-400/20 text-orange-600 border border-orange-400"
+          },
+          {
+            "name": "Prompt Engineering",
+            "icon": "https://cdn-icons-png.flaticon.com/512/4712/4712027.png",
+            "className": "bg-violet-400/20 text-violet-600 border border-violet-400"
+          },
+          {
+            "name": "AI Code Review",
+            "icon": "https://cdn-icons-png.flaticon.com/512/1828/1828884.png",
+            "className": "bg-cyan-400/20 text-cyan-600 border border-cyan-400"
+          },
+          {
+            "name": "Flujos con Agentes IA",
+            "icon": "https://cdn-icons-png.flaticon.com/512/4712/4712035.png",
+            "className": "bg-emerald-400/20 text-emerald-600 border border-emerald-400"
+          },
+          {
+            "name": "GitHub Copilot",
+            "icon": "https://cdn-icons-png.flaticon.com/512/2111/2111432.png",
+            "className": "bg-yellow-400/20 text-yellow-600 border border-yellow-400"
+          },
+          {
+            "name": "Cursor",
+            "icon": "https://cdn-icons-png.flaticon.com/512/5968/5968885.png",
+            "className": "bg-rose-400/20 text-rose-600 border border-rose-400"
           }
         ]
       },
@@ -251,6 +300,21 @@
             "className": "bg-emerald-400/20 text-emerald-500 border border-emerald-400"
           }
         ]
+      },
+      {
+        "name": "Idiomas",
+        "skills": [
+          {
+            "name": "Español (Nativo)",
+            "icon": "https://cdn-icons-png.flaticon.com/512/197/197575.png",
+            "className": "bg-red-400/10 text-red-500 border border-red-500 rounded"
+          },
+          {
+            "name": "Inglés (B1)",
+            "icon": "https://cdn-icons-png.flaticon.com/512/197/197374.png",
+            "className": "bg-blue-400/10 text-blue-500 border border-blue-500 rounded"
+          }
+        ]
       }
     ]
   },
@@ -258,7 +322,7 @@
   "aboutMe": {
     "sectionId": "sobre-mi",
     "title": "Sobre mí",
-    "data": "Soy <strong>Elian Ramírez</strong>, desarrollador web y móvil con más de tres años de experiencia. Me apasiona crear interfaces eficientes y escalables, cuidando tanto el rendimiento como la experiencia del usuario.<br />He liderado desarrollos frontend y full stack en empresas como <strong>LyA Electronic</strong> y <strong>Byteware</strong>, construyendo plataformas en React, Flutter y Node.js que optimizaron procesos internos y mejoraron la velocidad de entrega.<br />Actualmente, en <strong>Enternova S.A.S.</strong>, participo en el desarrollo de un SGPA en React, colaborando con equipos ágiles para entregar soluciones robustas y mantenibles. Mi objetivo es seguir creciendo en el desarrollo frontend moderno con tecnologías como Next.js y NestJS."
+    "data": "Soy <strong>Elian Ramírez</strong>, desarrollador web y móvil con más de tres años de experiencia. Me apasiona crear interfaces eficientes y escalables, cuidando tanto el rendimiento como la experiencia del usuario.<br /><br />Mi carrera ha evolucionado del desarrollo práctico a un flujo de trabajo integrado donde planifico arquitectura y tareas con IA, genero código mediante agentes de IA y realizo code review profundo antes del despliegue. Este enfoque ha incrementado significativamente la velocidad de entrega manteniendo altos estándares de calidad.<br /><br />He liderado desarrollos frontend y full stack en empresas como <strong>LyA Electronic</strong> y <strong>Byteware</strong>, construyendo plataformas en React, Flutter y Node.js que optimizaron procesos internos y mejoraron la velocidad de entrega. Actualmente, en <strong>Enternova S.A.S.</strong>, contribuyo al desarrollo de un SGPA mientras lidero flujos de desarrollo asistidos por IA.<br /><br />Mi objetivo es seguir creciendo en el desarrollo frontend moderno, ahora usando la IA para amplificar mi impacto — enfocándome más en arquitectura, calidad de código y productividad del desarrollador."
   },
   "footer": {
     "copyright": "2024",
