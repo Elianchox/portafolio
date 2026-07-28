@@ -36,6 +36,9 @@
 
   --color-foreground: var(--foreground);
   --color-highlight: var(--highlight);
+
+  --font-pixelify: 'Pixelify Sans Variable', system-ui;
+  --font-jetbrains: 'JetBrains Mono Variable', monospace;
 }
 
 
