@@ -22,7 +22,8 @@ const { hero } = Astro.props
       <img
         src="/me.JPG"
         alt="Foto del dueño del portafolio"
-        class="size-26 rounded-full object-cover ring-2 ring-green-400 shadow-[0_0_15px_rgba(74,222,128,0.6)]"
+        class="size-26 rounded-full object-cover ring-2 ring-primary"
+        style="box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 100%, transparent)"
       />
       <Badge>{hero.badgeText}</Badge>
     </div>
