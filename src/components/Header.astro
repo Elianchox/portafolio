@@ -3,6 +3,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import type { PortfolioConfig } from "../types/config";
 import ThemeToggle from "./ThemeToggle.astro";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
+import HamburgerIcon from "../assets/icons/HamburgerIcon.astro";
 interface Props {
   navigation: PortfolioConfig['navigation']
 }
@@ -11,21 +12,83 @@ const { navigation } = Astro.props
 const locale = Astro.currentLocale || 'es';
 ---
 
-<header class="fixed top-3 z-10 items-center justify-center w-full mx-auto mt-2 hidden md:flex">
-   <nav id="nav" class="flex px-3 text-lg lg:text-sm font-medium rounded-full text-muted-foreground dark:text-foreground justify-center items-center transition-all duration-300">
-      {Object.values(navigation.nav).map(nav => (
-        <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
-         href={`${getRelativeLocaleUrl(locale)}#${nav.sectionId}`}  data-section={nav.sectionId}>{nav.name}</a>
-      ))}
-      <div class="flex items-center gap-2 ml-2">
-        <LanguageSwitcher currentLocale={locale} />
-        <ThemeToggle themeLabels={navigation.theme}/>
-      </div>
-   </nav>
+<header class="fixed top-0 z-10 w-full mx-auto mt-0 md:mt-2">
+  <!-- MOBILE BAR -->
+  <div
+    id="mobile-header"
+    class="flex md:hidden items-center justify-between h-12 px-4 transition-all duration-300 mx-auto"
+  >
+    <button
+      id="hamburger-btn"
+      class="flex items-center justify-center p-3 hover:bg-secondary-300 dark:hover:bg-secondary-700 border-none rounded-lg cursor-pointer text-foreground transition-all duration-200"
+      aria-label="Abrir menú"
+    >
+      <HamburgerIcon class="size-5" />
+    </button>
+
+    <div class="flex items-center gap-1">
+      <LanguageSwitcher classContainer="icon-only" currentLocale={locale} />
+      <ThemeToggle classContainer="icon-only" themeLabels={navigation.theme} />
+    </div>
+  </div>
+
+  <!-- DESKTOP NAV -->
+  <nav
+    id="nav"
+    class="hidden md:flex px-3 text-lg lg:text-sm font-medium rounded-full text-muted-foreground dark:text-foreground justify-center items-center transition-all duration-300"
+  >
+    {Object.values(navigation.nav).map(nav => (
+      <a
+        class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
+        href={`${getRelativeLocaleUrl(locale)}#${nav.sectionId}`}
+        data-section={nav.sectionId}
+      >
+        {nav.name}
+      </a>
+    ))}
+    <div class="flex items-center gap-2 ml-2">
+      <LanguageSwitcher currentLocale={locale} />
+      <ThemeToggle themeLabels={navigation.theme} />
+    </div>
+  </nav>
 </header>
 
+<!-- MOBILE OVERLAY -->
+<div
+  id="mobile-overlay"
+  class="fixed inset-0 z-20 bg-background/80 backdrop-blur-md flex flex-col items-center justify-center opacity-0 invisible pointer-events-none scale-95 -translate-y-2 transition-all duration-300 ease-in-out"
+>
+  <nav class="flex flex-col items-center gap-6">
+    {Object.values(navigation.nav).map(nav => (
+      <a
+        class="text-2xl font-medium py-3 px-6 text-foreground hover:text-primary transition-colors cursor-pointer"
+        href={`${getRelativeLocaleUrl(locale)}#${nav.sectionId}`}
+        data-section={nav.sectionId}
+      >
+        {nav.name}
+      </a>
+    ))}
+  </nav>
+</div>
+
+<style>
+  #mobile-header .icon-only > button > span {
+    display: none;
+  }
+
+  #mobile-header .icon-only > button [class*="theme-icon-"] {
+    font-size: 0;
+  }
+</style>
+
 <script>
-  const navClasses = [
+  const mobileHeader = document.getElementById("mobile-header")!;
+  const hamburger = document.getElementById("hamburger-btn")!;
+  const overlay = document.getElementById("mobile-overlay")!;
+  const desktopNav = document.getElementById("nav")!;
+  const isMobile = () => window.innerWidth < 768;
+
+  const glassClasses = [
     "backdrop-blur-lg",
     "bg-secondary-foreground/10",
     "dark:bg-white/10",
@@ -34,52 +97,119 @@ const locale = Astro.currentLocale || 'es';
     "ring-white/10",
   ];
 
-  const nav = document.getElementById("nav");
   let ticking = false;
-
   const handleScroll = () => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        if (nav) {
-          if (window.scrollY > 100) {
-            navClasses.forEach(cls => nav.classList.add(cls));
-          } else {
-            navClasses.forEach(cls => nav.classList.remove(cls));
+        const scrolled = window.scrollY > 100;
+        [mobileHeader, desktopNav].forEach(el => {
+          if (el) {
+            glassClasses.forEach(cls => el.classList.toggle(cls, scrolled));
           }
-        }
+        });
         ticking = false;
       });
       ticking = true;
     }
   };
-
   window.addEventListener("scroll", handleScroll, { passive: true });
 
-  const links = document.querySelectorAll("nav a[data-section]");
+  let menuOpen = false;
+
+  const closeMenu = () => {
+    menuOpen = false;
+    overlay.classList.remove("open", "visible", "pointer-events-auto", "opacity-100", "scale-100", "translate-y-0");
+    overlay.classList.add("opacity-0", "invisible", "pointer-events-none", "scale-95", "-translate-y-2");
+    hamburger?.classList.remove("hamburger-open");
+    document.body.classList.remove("overflow-hidden");
+    hamburger?.setAttribute("aria-label", "Abrir menú");
+  };
+
+  const openMenu = () => {
+    menuOpen = true;
+    overlay.classList.remove("opacity-0", "invisible", "pointer-events-none", "scale-95", "-translate-y-2");
+    overlay.classList.add("open", "visible", "pointer-events-auto", "opacity-100", "scale-100", "translate-y-0");
+    hamburger?.classList.add("hamburger-open");
+    document.body.classList.add("overflow-hidden");
+    hamburger?.setAttribute("aria-label", "Cerrar menú");
+  };
+
+  const toggleMenu = () => {
+    menuOpen ? closeMenu() : openMenu();
+  };
+
+  hamburger?.addEventListener("click", toggleMenu);
+
+  overlay.querySelectorAll("a[data-section]").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  overlay.addEventListener("click", (e: MouseEvent) => {
+    if (e.target === overlay) closeMenu();
+  });
+
+  document.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === "Escape" && menuOpen) closeMenu();
+  });
+
+  const links = document.querySelectorAll("nav a[data-section], #mobile-overlay a[data-section]");
   const sections = document.querySelectorAll("section[id]");
 
   if (sections.length > 0) {
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.id;
             links.forEach((link) => {
               const sectionId = link.getAttribute("data-section");
-              link.classList.toggle(
-                "text-primary",
-                sectionId === id
-              );
+              link.classList.toggle("text-primary", sectionId === id);
             });
           }
         });
       },
-      {
-        threshold: 0.2,
-        rootMargin: "-30% 0px -40% 0px"
-      }
+      { threshold: 0.2, rootMargin: "-30% 0px -40% 0px" }
     );
 
     sections.forEach((section) => observer.observe(section));
   }
+
+  const setupMobileDropdowns = () => {
+    const wrappers = document.querySelectorAll(".theme-toggle-wrapper, .language-switcher-wrapper");
+
+    if (isMobile()) {
+      wrappers.forEach(wrapper => {
+        wrapper.classList.add("mobile-click");
+        const btn = wrapper.querySelector("button");
+        if (!btn) return;
+
+        const newBtn = btn.cloneNode(true) as HTMLButtonElement;
+        btn.parentNode!.replaceChild(newBtn, btn);
+
+        newBtn.addEventListener("click", (e: MouseEvent) => {
+          e.stopPropagation();
+          const isOpen = wrapper.classList.contains("open");
+
+          wrappers.forEach(w => w.classList.remove("open"));
+
+          if (!isOpen) {
+            wrapper.classList.add("open");
+          }
+        });
+      });
+
+      document.addEventListener("click", (e: MouseEvent) => {
+        const target = e.target as Element | null;
+        const isDropdown = target?.closest(".theme-toggle-wrapper, .language-switcher-wrapper");
+        if (!isDropdown) {
+          wrappers.forEach(w => w.classList.remove("open"));
+        }
+      });
+    } else {
+      wrappers.forEach(w => w.classList.remove("mobile-click", "open"));
+    }
+  };
+
+  setupMobileDropdowns();
+  window.addEventListener("resize", setupMobileDropdowns);
 </script>

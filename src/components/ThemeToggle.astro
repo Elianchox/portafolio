@@ -118,10 +118,9 @@ const {
       icon.classList.remove("active");
     });
 
-    const currentIcon = document.querySelector(`.theme-icon-${activeTheme}`);
-    if (currentIcon) {
-      currentIcon.classList.add("active");
-    }
+    document.querySelectorAll(`.theme-icon-${activeTheme}`).forEach((icon) => {
+      icon.classList.add("active");
+    });
 
     document.querySelectorAll(".theme-option").forEach((option) => {
       const btn = option as HTMLButtonElement;

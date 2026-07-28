@@ -1,11 +1,21 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import { getTranslations } from '../utils/i18n';
+import { locales, defaultLocale } from '../utils/i18n';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
-const t = await getTranslations('es');
+const acceptLanguage = Astro.request.headers.get('Accept-Language') || '';
+
+const preferredLocales = acceptLanguage
+  .split(',')
+  .map(entry => {
+    const [locale, qPart] = entry.split(';');
+    const q = qPart ? parseFloat(qPart.replace('q=', '')) : 1;
+    return { locale: locale.trim().split('-')[0], q };
+  })
+  .sort((a, b) => b.q - a.q);
+
+const supportedCodes = locales.map(l => l.code);
+const bestMatch = preferredLocales.find(p => supportedCodes.includes(p.locale));
+const targetLocale = bestMatch ? bestMatch.locale : defaultLocale;
+
+return Astro.redirect(getRelativeLocaleUrl(targetLocale), 302);
 ---
-
-<Layout t={t}>
-  <Welcome t={t} />
-</Layout>
