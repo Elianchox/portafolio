@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import type { PortfolioConfig } from "../types/config";
 import ThemeToggle from "./ThemeToggle.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 interface Props {
   navigation: PortfolioConfig['navigation']
 }
@@ -16,7 +17,10 @@ const locale = Astro.currentLocale || 'es';
         <a class="px-2 py-2 transition hover:text-primary dark:hover:text-primary cursor-pointer"
          href={`${getRelativeLocaleUrl(locale)}#${nav.sectionId}`}  data-section={nav.sectionId}>{nav.name}</a>
       ))}
-      <ThemeToggle classContainer="px-4" themeLabels={navigation.theme}/>
+      <div class="flex items-center gap-2 ml-2">
+        <LanguageSwitcher currentLocale={locale} />
+        <ThemeToggle themeLabels={navigation.theme}/>
+      </div>
    </nav>
 </header>
 

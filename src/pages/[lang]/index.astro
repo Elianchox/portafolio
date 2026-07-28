@@ -1,0 +1,18 @@
+---
+import Welcome from '../../components/Welcome.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getTranslations, locales, defaultLocale } from '../../utils/i18n';
+
+export async function getStaticPaths() {
+  return locales
+    .filter(l => l.code !== defaultLocale)
+    .map(l => ({ params: { lang: l.code } }));
+}
+
+const locale = Astro.params.lang!;
+const t = await getTranslations(locale);
+---
+
+<Layout t={t}>
+  <Welcome t={t} />
+</Layout>

@@ -1,0 +1,61 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { locales } from "../utils/i18n";
+
+interface Props {
+  classContainer?: string;
+  currentLocale: string;
+}
+
+const { classContainer = "", currentLocale } = Astro.props;
+---
+
+<div class:list={["relative language-switcher-wrapper", classContainer]}>
+  <button
+    id="language-current"
+    class="flex items-center justify-center gap-1 p-2 hover:bg-secondary-300 dark:hover:bg-secondary-700 border-none rounded-lg cursor-pointer text-foreground transition-all duration-200"
+    aria-label="Cambiar idioma"
+  >
+    <img src={locales.find(l => l.code === currentLocale)?.flag} alt={locales.find(l => l.code === currentLocale)?.label} class="size-4 rounded-sm" />
+    <span class="text-sm">{locales.find(l => l.code === currentLocale)?.label}</span>
+  </button>
+
+  <div
+    class="language-dropdown absolute top-[calc(100%+0.5rem)] right-0 bg-background border border-border rounded-lg p-1 min-w-[140px] opacity-0 invisible -translate-y-2.5 transition-all duration-200 ease-in-out shadow-lg z-50"
+  >
+    {locales.map(l => (
+      <a
+        href={getRelativeLocaleUrl(l.code)}
+        class:list={[
+          "flex items-center gap-3 w-full px-3 py-2 rounded-md cursor-pointer text-foreground hover:bg-secondary-400 dark:hover:bg-secondary-700 transition-all duration-150 text-sm language-option",
+          l.code === currentLocale && "active"
+        ]}
+      >
+        <img src={l.flag} alt={l.label} class="size-4 rounded-sm" />
+        <span class="whitespace-nowrap">{l.label}</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .language-dropdown {
+    pointer-events: none;
+  }
+
+  .language-switcher-wrapper:hover .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .language-option.active {
+    color: var(--primary);
+    background-color: var(--secondary-200);
+  }
+
+  :global(.dark) .language-option.active {
+    background-color: var(--secondary-800);
+  }
+</style>
